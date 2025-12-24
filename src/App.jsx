@@ -75,6 +75,8 @@ function App() {
 
       return updatedProjects;
     });
+
+    hideCreateProjectFrom();
   }
 
   function handleDeleteProject(projectIndexToRemove) {
