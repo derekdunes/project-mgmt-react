@@ -1,12 +1,12 @@
 import Tasks from "./Task/Tasks"
 import Project from "./Project"
 
-const ProjectDetails = () => {
+const ProjectDetails = (props) => {
 
     return (
         <>
-            <Project />
-            <Tasks />        
+            <Project {...props}/>
+            <Tasks {...props}/>        
         </>
     )
 
