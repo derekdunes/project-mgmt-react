@@ -2,6 +2,7 @@ import Input from "./Input";
 import { useRef } from "react";
 
 const CreateProject = ({ onHideCreateForm, addNewProject }) => {
+
   const titleRef = useRef();
 
   const descRef = useRef();
@@ -9,6 +10,7 @@ const CreateProject = ({ onHideCreateForm, addNewProject }) => {
   const dateRef = useRef();
 
   function saveProject() {
+    
     const title = titleRef.current.getValue();
     const description = descRef.current.getValue();
     const date = dateRef.current.getValue();
