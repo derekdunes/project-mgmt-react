@@ -14,23 +14,23 @@ const defaultProjects = [
   },
   {
     title: "Mastering React",
-    description: "sbndlsbd sdfklsdnf",
-    date: "15/11/2025",
-    tasks: ["components", "state"],
+    description: "sdfsdfsdf sdfklsdfssdnf",
+    date: "14/10/2026",
+    tasks: ["components", "state", "props"]
   },
 ];
 
 function App() {
-  const [isCreateProject, setIsCreateProject] = useState(false);
+
   const [projects, setProjects] = useState(defaultProjects);
-  const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
+  const [selectedProjectIndex, setSelectedProjectIndex] = useState(undefined);
 
   function showCreateProjectForm() {
-    setIsCreateProject(true);
+    setSelectedProjectIndex(null);
   }
 
   function hideCreateProjectFrom() {
-    setIsCreateProject(false);
+    setSelectedProjectIndex(undefined);
   }
 
   function handleSelectedProjectIndex(index) {
@@ -75,6 +75,8 @@ function App() {
 
       return updatedProjects;
     });
+
+    hideCreateProjectFrom();
   }
 
   function handleDeleteProject(projectIndexToRemove) {
@@ -86,10 +88,10 @@ function App() {
       return updatedProjects;
     });
 
-    handleSelectedProjectIndex(0);
+    handleSelectedProjectIndex(undefined);
   }
 
-  const noProjectYet = projects.length === 0;
+  const isNotNullorUndefined = projects.length > 0 && (selectedProjectIndex !== null && selectedProjectIndex !== undefined); 
 
   return (
     <main className="h-screen my-8 flex gap-8">
@@ -100,16 +102,16 @@ function App() {
       />
 
       <section className="mt-24 w-2/3">
-        {isCreateProject && (
+        {selectedProjectIndex === null && (
           <CreateProject
             onHideCreateForm={hideCreateProjectFrom}
             addNewProject={handleAddProject}
           />
         )}
-        {!isCreateProject && noProjectYet && (
+        {selectedProjectIndex === undefined && (
           <MainBar onCreateProject={showCreateProjectForm} />
         )}
-        {!isCreateProject && !noProjectYet && (
+        {isNotNullorUndefined && (
           <ProjectDetails
             projectIndex={selectedProjectIndex}
             project={projects[selectedProjectIndex]}
