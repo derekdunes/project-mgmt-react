@@ -33,7 +33,7 @@ function App() {
     setSelectedProjectIndex(undefined);
   }
 
-  function handleSelectedProjectIndex(index) {
+  function handleSelectedProjectClick(index) {
     setSelectedProjectIndex(index);
   }
 
@@ -88,7 +88,7 @@ function App() {
       return updatedProjects;
     });
 
-    handleSelectedProjectIndex(undefined);
+    handleSelectedProjectClick(undefined);
   }
 
   const isNotNullorUndefined = projects.length > 0 && (selectedProjectIndex !== null && selectedProjectIndex !== undefined); 
@@ -98,7 +98,8 @@ function App() {
       <SideBar
         projectList={projects}
         onCreateProject={showCreateProjectForm}
-        setSelectedIndex={handleSelectedProjectIndex}
+        selectedIndex={selectedProjectIndex}
+        handleProjectClick={handleSelectedProjectClick}
       />
 
       <section className="mt-24 w-2/3">
